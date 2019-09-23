@@ -1,0 +1,245 @@
+/* 
+    Created on : 10-Apr-2019, 5:44:32 PM
+    Author     : Rishabh
+*/
+
+section{/*contains the header and nav element*/
+    background-color: lightgrey;
+    text-align: center; /*text align center*/
+    color: dimgrey; 
+    padding: 10px 20px 20px 20px; /*padding inside section element*/
+    width: 100%; /*width 100% of the page*/
+    min-height: 100%; 
+    box-sizing: border-box; /*border box to contain padding inside the border and not effect the page size*/
+}
+#links{
+    display: flex; /*flexible display of all nav elements*/
+    justify-content: center; /*center justified*/
+}
+#links > a{
+    color: white;
+    background-color: grey;
+    width: 120px;
+    margin: 5px;
+    text-align: center;
+    line-height: 100%; /*line height of nav elements to 100% of their size*/
+    font-size: 18px;
+    text-decoration: none; /*remove automatic decoration*/
+    padding: 5px;
+}
+#links > a:hover{ /*hover property for links*/
+    background-color: silver;
+    color: black;
+}
+header > h1{
+    font-size: 35px;
+}
+header > h2{
+    font-size: 25px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+/*making footer stick to the bottom always*/
+.wrapper {
+    min-height: 100%; /*minimum height of wrapper of all content is 100%*/
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+    text-align: center; /*making buttons and contents centralized*/
+}
+.push {
+    height: 50px;
+}
+.footer{
+    text-align: center;
+    background-color: lightgrey;
+    font-size: 2.1em; /*font size for footer*/
+    color: dimgrey;
+}
+/**********************Casino Craps*************************/
+.blocks{ /*flexible blocks to contaion all casino crap elements*/
+    min-height: 100%;
+    display: flex;
+    justify-content: center;/*center justified*/
+}
+.blocks > div{ /*all 4 boxes of casino craps*/
+    border: 5px solid lightgrey;
+    margin: 25px 5px 20px 5px;
+    width: 250px;
+    height: 360px;
+    box-sizing: border-box; /*border box to contain padding inside the border and not effect the page size*/
+    text-align: center;
+    margin-bottom: 50px; /*margin from bottom*/
+}
+#f1 > div{ /*two orange boxes inside div that show the rolled dices*/
+    width: 140px;
+    height: 140px;
+    background-color: orange;
+    box-shadow: 5px 5px 10px grey; /*giving box shadow to orange boxes*/
+    margin: 20px 10px 5px 45px;
+    border-right:1px solid white;
+    border-bottom:1px solid white;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px 0px 5px;
+    font-size: 80px;
+    box-sizing: border-box;
+}
+#rolled{ /*element to depict the sum of number on the dices*/
+    font-size: 150px;
+}
+.box2{ /*buttons to make the dice roll again and clear stats css*/
+    width: 170px;
+    height: 50px;
+    margin: 20px 30px 0px 30px;
+}
+/*************************Tic Tac Toe*****************************/
+table{
+    margin: 80px auto;  /*making table centralized*/
+}
+td.tic{ /*columns of tic tac to table*/
+    border: 1px solid blue;
+    width: 65px;
+    height: 65px;
+    font-size: 2.8em;
+    font-family: sans-serif;
+    text-align: center;
+}
+/* these four turn off outer borders */
+tr.tic:first-child td {
+    border-top: none; /*removing top border of first row*/
+}
+
+tr.tic:last-child td {
+    border-bottom: none;/*removing bottom border of last row*/
+}
+
+td.tic:first-child {
+    border-left: none; /*removing left border of first column*/
+}
+td.tic:last-child {
+    border-right: none; /*removing right border of last row*/
+}
+#ttt{ /*play again button*/
+    width: 170px;
+    height: 30px;
+    margin-top: 20px;
+}
+/******************Bingo****************************/
+.bingotable{
+    margin: 20px auto; /*centralized table ith margin auto*/
+}
+td.bingo{ /*bino columns css*/
+    border: 1px solid blue;
+    width: 55px;
+    height: 55px;
+    font-size: 2.8em;
+    font-family: sans-serif;
+    text-align: center;
+}
+#generate, #caller{ /*buttons of bingo game to generate number and caller*/
+    width: 170px;
+    height: 30px;
+    margin-top: 20px;	
+}
+#caller{
+    width: 80px;
+}
+tr.bingo:first-child{
+    background-color: skyblue;  /*first row blue of table */
+}
+#middle{ /*setting the middle element to Free with black background*/
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    z-index: 100;/*making free appear at the top of all content*/
+}
+/****************Concentration********************/
+td.conc{ /*Bingo & Concentration*/
+    border: 1px solid blue;
+    width: 55px;
+    height: 55px;
+    font-size: 2.8em;
+    font-family: sans-serif;
+    text-align: center;
+}
+.concentrate{ /*contentration table styles*/
+    margin: 20px auto;
+}
+td.conc{/*making color of each cell dodgerblue*/
+    border: 1px solid white;
+    background-color: dodgerblue;
+}
+#timer, #new{ /* buttons of concentration game*/
+    width: 90px;
+    height: 30px;
+    margin-top: 20px;	
+}
+#new{
+    width: 120px;
+}	
+#message {
+    background-color: #f9ecf2;
+    border: 1px solid #660066;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black, -1px -1px 5px white;
+    display: none;
+    font-weight: bold;
+    height: 30%;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    top: 50px;
+    left: 10%;
+    width: 70%;
+    z-index: 200;
+}
+
+/* covers the entire page in a semi-transparent grey, hidden by default */
+#overlay {
+    background-color: rgba(20, 20, 20, 0.4);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+/*MAX WIDTH OF 800 px - will work for smaller mobile devices*/
+@media (max-width: 800px){
+    #links{
+        display: flex;
+        flex-wrap: wrap;/*making links wrap as the screen gets smaller*/
+    }
+    #links > a{
+        font-size: 1.35em;
+    }
+    .blocks{
+        flex-direction: column; /*wrapping block columns*/
+    }
+    #f1, #f2, #f3, #f4{
+        width: 95%;
+        height: 100%;
+    }
+    #f1 > div{
+        display: inline-block; /*making div orange boxes inline of the box*/
+        margin: 10px;
+    }
+    .box2{
+        width: 50%;
+        height: 20%;
+        margin: 5px 2px 5px 2px;
+    }
+    #f4 span{
+        margin-right: 20px;
+    }
+    #ttt,#caller,#timer,#generate,#new{ /*changing button styles as the screen gets smaller*/
+        font-size: 1.1em;
+        width: 40%;
+        height: 30%;
+    }
+}

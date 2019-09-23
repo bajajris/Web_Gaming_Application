@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Assignment 4 - Phase 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- for mobile devices -->
+        <style type="text/css">
+            #form{  /*form styles for registration*/
+                background-color: #28B5CC;
+                border: 1px solid #660066;  
+                text-align: center;
+                border-radius: 5px;
+                box-shadow: 1px 1px 5px black, -1px -1px 5px white;
+                font-weight: bold;
+                height: 40%;
+                margin: 0 auto;
+                padding: 20px;
+                position: relative;
+                top: 140px;
+                width: 40%;
+                z-index: 200;
+            }
+
+            /* covers the entire page in a semi-transparent grey, hidden by default */
+            #overlay {
+                background-color: rgba(20, 20, 20, 0.4);
+                height: 100%;
+                left: 0;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: -100;
+            }
+            /* input boxes styles*/
+            input[type=text],input[type=password],input[type=email]{
+                padding: 15px;
+                margin: 15px;
+                box-sizing: border-box;
+                font-size: 1.4em;
+                width: 50%;
+            }
+            a,input[type=submit]{
+                text-decoration: none;
+                background-color: #0013FF;
+                text-align: center;
+                font-size: 1.6em;
+                color: white;
+                padding: 10px;
+                margin: 15px;
+                border: none;
+            }
+            nav{
+                margin: 10px;
+            }
+
+            label{
+                color: #403B3B;
+                font-size: 1.2em;
+            }
+            /*hover property*/
+            input[type=submit]:hover{
+                background-color: #005FFF;
+                color: black;
+            }
+            /*submit button box shadow and width*/
+            input[type=submit]{
+                box-shadow: 5px 10px 10px grey; 
+                width: 80%;
+            }
+            /*hover property*/
+            a:hover{
+                background-color: #4601E7;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="form">
+            <h2>Login/Register</h2>                     <!--Page label-->
+            <form action="Insert.php" method="POST">
+                <label>Name:
+                    <!--Name input field-->
+                    <input type="text" required maxlength="1500" name="name"> 
+                </label>
+                <br>
+                <label>Password:
+                    <!--Password input field-->
+                    <input type="password" required maxlength="20" name="password">
+                </label>
+                <br>
+                <label>Email:
+                    <!--Email input field-->
+                    <input type="email" required name="email">
+                </label>
+                <br>
+                <label>Gender: </label>
+                <!--Gender input field-->
+                <input type="radio" name="gender" value="Male">Male
+                <input type="radio" name="gender" value="Female">Female    
+                <br>
+                <input type="submit">                     <!--Name input field-->
+            </form>
+            <nav>
+                <!--Navigation input field-->
+                <a href="loginpage.html">Login</a>
+                <a href="hall_of_fame.php">Hall of Fame</a>
+            </nav>
+        </div>
+        <!--Covers document into grey background-->
+        <div id="overlay"></div>
+    </body>
+</html>

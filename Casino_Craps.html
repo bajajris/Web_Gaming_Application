@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel = "stylesheet" type = "text/css" href = "styles.css" /> <!-- link style sheets -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- for mobile devices -->
+    </head>
+    <body>
+        <div class="wrapper"> <!-- wrapper class with all the content -->
+            <section><!-- contains header and links -->
+                <header> <!--Header of all pages-->
+                    <h1>Assignment1</h1>
+                    <h2>Casino Craps</h2>
+                </header>
+                <nav id="links"><!-- nav element with link to all gams -->
+                    <a href="index.html">Home</a>
+                    <a href="Casino_Craps.html">Casino Craps</a>
+                    <a href="Tic_Tac_Toe.html">Tic Tac Toe</a>
+                    <a href="bingo.html">Bingo</a>
+                    <a href="concentration.html">Concentration</a>
+                </nav>
+            </section>
+            <div class="blocks"> <!-- block for making all elemnts flexible -->
+                <div id="f1">
+                    <div id="box0">0</div><!-- dices that are rolled -->
+                    <div id="box1">0</div><!-- dices that are rolled -->
+                </div>
+                <div id="f2">
+                    <p>You rolled...</p>
+                    <div id="rolled">00</div><!-- sum of rolled dices -->
+                </div>
+                <div id="f3"></div>
+                <div id="f4">
+                    <button class="box2" onclick="rolldice();">Roll the dice!</button> <!-- roll the dice to roll it again -->
+                    <button class="box2" onclick="clearStats();">Clear stats</button> <!-- clear win/lose stats -->
+                    <h3>Statistics</h3><!-- display statistics -->
+                    <h3>Wins: <span id="cwin">0</span><br>Losses: <span id="closs">0</h3> <!-- keep track of win and lose -->
+                </div>
+            </div>
+            <form action = "display.php" method="GET">
+                <input type="submit">
+                <label style="visibility: hidden">Wins:
+                    <input type = "number" id="winValue" name="totalWins" size="1" readonly>
+                </label>
+            </form>
+            <div class="push"></div>
+        </div>
+        <div id="message">
+            <p>GAME OVER!</p>
+            <h3 id="winner"></h3>
+            <p>&mdash;click anywhere in the box to dismiss this message&mdash;</p>
+        </div>
+        <div id="overlay"></div>
+        <footer class="footer">bajajris, SYST10199 Web Programming @ Sheridan College</footer><!-- footer of page -->
+        <script type="text/javascript">
+            //dices and their sums
+            var dice1, dice2, sum;
+            var win = document.getElementById("cwin"); // wins counter
+            var lose = document.getElementById("closs"); // loss counter
+            var point = 0; // established point
+            var turn = 0; // turn number
+            var numWin = 0; // number of wins
+            var numLoss = 0; // number of losses
+            var totalWins = 0; // hidden form to connect to php
+            document.getElementById("f3").innerHTML = "Roll the dice"; // say user to roll the dice
+
+            //function that generates randon dice values and checks win
+            function rolldice() {
+                turn = turn + 1; // increase turn
+
+                //generate random numbers
+                dice1 = Math.floor((Math.random() * 6) + 1);
+                dice2 = Math.floor((Math.random() * 6) + 1);
+
+                //add numberes to dice
+                document.getElementById("box0").innerHTML = dice1;
+                document.getElementById("box1").innerHTML = dice2;
+
+                // dice sum
+                document.getElementById("rolled").innerHTML = dice1 + dice2;
+                sum = dice1 + dice2;
+                // check win
+                checkWin();
+            }
+            //clear all stats when button pressed
+            function clearStats() {
+                win.innerHTML = 0;
+                lose.innerHTML = 0;
+                turn = 0;
+                point = 0;
+                numWin = 0;
+                numLoss = 0;
+                totalWins = 0;
+            }
+
+            //checks if user won
+            function checkWin() {
+                // if first turn
+                if (turn === 1) {
+                    //lose if satisfies
+                    if (sum === 2 || sum === 3 || sum === 12) {
+                        numLoss += 1; //change value
+                        lose.innerHTML = numLoss;
+                        displayWin(false); // call display Win
+
+                    } else if (sum === 7 || sum === 11) { // win if satisfies given condition
+                        numWin += 1; // change value
+                        win.innerHTML = numWin;
+                        displayWin(true);// call display Win
+                    } else { // else point is established equal to sum
+                        point = sum;
+                        document.getElementById("f3").innerHTML = "Roll Again!!!"; // say to roll again
+                    }
+                } else {
+                    //other turns
+                    if (sum === point) {
+                        // if point satisfied display and increase win
+                        numWin += 1;
+                        win.innerHTML = numWin;
+                        displayWin(true);
+                    } else if (sum === 7) {
+                        //if satisfies lose increase
+                        numLoss += 1;
+                        lose.innerHTML = numLoss;
+                        displayWin(false);
+                    }
+                }
+            }
+            //reset game to reset to original valies of dice after each game
+            function resetGame() {
+                document.getElementById("box0").innerHTML = 0;
+                document.getElementById("box1").innerHTML = 0;
+                document.getElementById("rolled").innerHTML = 0;
+                turn = 0;
+            }
+            // add listener to message div to reset game when clicked
+            document.getElementById("message").addEventListener("click", function () {
+                displayWin("over"); // make overlay and message disappear
+                //reset game once win displayed for a person
+                resetGame();
+            });
+            //display win
+            function displayWin(show) {
+                // if true display win ad increase win value
+                if (show === true) {
+                    totalWins++;
+                    document.getElementById("winValue").value = totalWins;
+                    document.getElementById("winner").innerHTML = "YOU WIN!!!!!";
+                    document.getElementById("message").style.display = "block";
+                    document.getElementById("overlay").style.display = "block";
+                } else if (show === "over") {
+                    // if over hide overlay and message dialog
+                    document.getElementById("message").style.display = "none";
+                    document.getElementById("overlay").style.display = "none";
+                } else {
+                    // if false display lose 
+                    document.getElementById("winner").innerHTML = "YOU LOSE!!!!!";
+                    document.getElementById("message").style.display = "block";
+                    document.getElementById("overlay").style.display = "block";
+                }
+                document.getElementById("f3").innerHTML = "Roll the dice";
+            }
+        </script>
+    </body>
+</html>
